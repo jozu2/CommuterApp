@@ -2,7 +2,6 @@ import { useNavigation } from "@react-navigation/native";
 import {
   View,
   Text,
-  TouchableWithoutFeedback,
   StyleSheet,
   Alert,
   ActivityIndicator,
@@ -52,9 +51,7 @@ const RequestBtn = () => {
     const distance = R * c;
     return distance;
   };
-  const openAppSettings = async () => {
-    await Linking.openSettings();
-  };
+
   const handleCreateRide = async () => {
     setActiveIndicator(true);
     if (!driverData.info.isVerified) {
@@ -169,8 +166,10 @@ const RequestBtn = () => {
           fontSize: 30,
           fontWeight: "500",
           textAlign: "center",
-          color: "#909090",
-          marginTop: 15,
+          color: activeIndicator ? "#ebebeb" : "#fff",
+          backgroundColor: activeIndicator ? "transparent" : "#8660bf",
+          paddingVertical: 10,
+          borderRadius: 10,
         }}
       >
         {activeIndicator ? "Loading . . ." : "REQUEST A RIDE"}

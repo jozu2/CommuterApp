@@ -20,9 +20,6 @@ const SetRideRequest = () => {
   const origin = useSelector(selectOrigin);
   const dispatch = useDispatch();
   const destination = useSelector(selectDestination);
-  const userCount = useSelector(selectUserCount);
-  console.log(userCount);
-  console.log(destination);
   const handleSearchRide = () => {
     if (origin.title === null) {
       Alert.alert("Please Set your Entry point");
@@ -132,7 +129,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingHorizontal: 5,
     fontSize: 19,
-    color: "black",
+    color: "#fff",
     fontWeight: "400",
   },
   setDestinationText: {
@@ -155,7 +152,7 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     width: "50%",
     alignSelf: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "#25a45c",
     paddingVertical: 10,
     marginBottom: 30,
   },
@@ -166,7 +163,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     width: "70%",
     alignSelf: "center",
-    backgroundColor: "#bdbdbd",
+    backgroundColor: "#8660bf",
     paddingVertical: 12,
     marginBottom: 15,
   },
@@ -184,7 +181,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 24,
     fontWeight: "500",
-    backgroundColor: "gray",
+    backgroundColor: "#1e1f22",
     borderRadius: 15,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,

@@ -26,7 +26,7 @@ const DriverLogin = () => {
   const [isLoading, setIsloading] = useState(false);
 
   const validateEmail = (email) => {
-    if (email.endsWith("@gmail.com")) {
+    if (email.endsWith("@dhvsu.edu.ph")) {
       setInvalid(false);
       return true;
     } else {
@@ -66,7 +66,7 @@ const DriverLogin = () => {
           dispatch(setUserProfile({ info: userData, id: user.uid }));
         } else {
           setIsloading(false);
-          alert("Please log in your Driver Account");
+          alert("Please log in your Commuter Account");
         }
       } else {
         firebase.auth().currentUser.sendEmailVerification({
@@ -157,9 +157,9 @@ const DriverLogin = () => {
           marginBottom: 30,
         }}
       />
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Login User</Text>
       <Text style={styles.sub}>
-        Enter your username and password to login to your driver account
+        Enter your username and password to login to your user account
       </Text>
 
       <TextInput
@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
     bottom: "25%",
   },
   loginBtn: {
-    backgroundColor: "gray",
+    backgroundColor: "#8660bf",
     width: "90%",
     paddingVertical: 8,
     marginVertical: 30,

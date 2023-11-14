@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import * as Animatable from "react-native-animatable";
 
 import React from "react";
 import { off, onValue, ref, remove } from "firebase/database";
@@ -124,14 +125,18 @@ const RequestStatus = () => {
           {!userStat && (
             <>
               <ActivityIndicator size={100} color="green" />
-              <Text style={{ fontSize: 20, marginVertical: 20 }}>
+              <Animatable.Text
+                animation="fadeIn"
+                iterationCount="infinite"
+                style={{ fontSize: 20, marginVertical: 20 }}
+              >
                 Waiting. . .
-              </Text>
+              </Animatable.Text>
               <TouchableOpacity
                 style={{
-                  paddingHorizontal: 30,
-                  paddingVertical: 10,
-                  backgroundColor: "red",
+                  paddingHorizontal: 35,
+                  paddingVertical: 14,
+                  backgroundColor: "#f03f46",
                   borderRadius: 30,
                   marginTop: 30,
                 }}
@@ -177,7 +182,9 @@ const RequestStatus = () => {
                   );
                 }}
               >
-                <Text style={{ color: "#fff", fontWeight: "bold" }}>
+                <Text
+                  style={{ color: "#fff", fontWeight: "bold", fontSize: 16 }}
+                >
                   Cancel
                 </Text>
               </TouchableOpacity>
@@ -205,7 +212,9 @@ const RequestStatus = () => {
         >
           <>
             <AntDesign name={"closecircle"} size={100} color={"red"} />
-            <Text style={{ fontSize: 20, marginTop: 20 }}>Request Decline</Text>
+            <Text style={{ fontSize: 20, marginTop: 20 }}>
+              Request Declined
+            </Text>
             <Text
               style={{
                 fontSize: 18,
@@ -214,7 +223,7 @@ const RequestStatus = () => {
                 marginTop: 5,
               }}
             >
-              The Driver Decline your request
+              The driver declined your request
             </Text>
             <TouchableOpacity
               style={{

@@ -13,7 +13,7 @@ const TopNav = (showBurger) => {
           style={{ position: "absolute", bottom: 30, left: 15 }}
           name={"navicon"}
           size={50}
-          color={"#242424"}
+          color={"#ebebeb"}
           onPress={() => navigation.openDrawer()}
         />
       )}
@@ -23,7 +23,7 @@ const TopNav = (showBurger) => {
           style={{ position: "absolute", bottom: 27, left: 15 }}
           name={"arrow-left"}
           size={40}
-          color={"#313133"}
+          color={"#ebebeb"}
           onPress={() => navigation.goBack()}
         />
       )}
@@ -39,11 +39,10 @@ export default TopNav;
 
 const styles = StyleSheet.create({
   topBar: {
-    backgroundColor: "#fff",
+    backgroundColor: "#1e1f22",
     width: "100%",
     paddingTop: "5%",
     paddingBottom: "5%",
-    borderWidth: 1,
     borderTopWidth: 0,
     borderRightWidth: 0,
     borderLeftWidth: 0,

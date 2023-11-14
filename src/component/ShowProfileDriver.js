@@ -4,6 +4,7 @@ import { Image } from "react-native";
 import Icon from "react-native-vector-icons/EvilIcons";
 
 const ShowProfileDriver = ({ data }) => {
+  console.log(data);
   return (
     <View style={{ flex: 1, width: "100%" }}>
       {data ? (
@@ -103,7 +104,7 @@ const ShowProfileDriver = ({ data }) => {
                 <View
                   style={{
                     display: "flex",
-                    paddingHorizontal: 54,
+                    paddingHorizontal: 34,
                     paddingVertical: 10,
                   }}
                 >
@@ -113,6 +114,26 @@ const ShowProfileDriver = ({ data }) => {
                       justifyContent: "space-between",
                     }}
                   >
+                    <View style={{ alignItems: "center" }}>
+                      <Text
+                        style={{
+                          fontSize: 17,
+                          fontWeight: "400",
+                          color: "black",
+                        }}
+                      >
+                        {`${data.stars} ⭐`}
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 12,
+                          fontWeight: "500",
+                          color: "#4f4f4f",
+                        }}
+                      >
+                        Stars
+                      </Text>
+                    </View>
                     <View style={{ alignItems: "center" }}>
                       <Text
                         style={{

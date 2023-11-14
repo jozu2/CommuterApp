@@ -22,7 +22,6 @@ import {
   selectUserProfile,
   setRequestHide,
 } from "./../../Redux/navSlice";
-import { debounce } from "lodash";
 import { db } from "./../../../config";
 
 const Chat = () => {
@@ -32,13 +31,12 @@ const Chat = () => {
   const [inputText, setInputText] = useState("");
   const pic = driverReduxData.info.profilePic;
   const dispatch = useDispatch();
-  console.log(savedId);
 
   const options = {
-    timeZone: "Asia/Manila", // Set the timezone to Philippines (PH)
+    timeZone: "Asia/Manila",
     hour: "numeric",
     minute: "numeric",
-    hour12: false, // Use 24-hour format
+    hour12: false,
   };
   const formatter = new Intl.DateTimeFormat("en-PH", options);
 

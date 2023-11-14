@@ -7,7 +7,6 @@ import RideStarted from "./RideStarted";
 import { useSelector } from "react-redux";
 import { selectRideStarted, selectSaveDriverId } from "../../Redux/navSlice";
 import RequestStatus from "./RequestStatus";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const UserDashboard = () => {
   const driverId = useSelector(selectSaveDriverId);

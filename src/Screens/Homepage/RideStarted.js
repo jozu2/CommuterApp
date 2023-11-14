@@ -28,17 +28,20 @@ import MapView, { Marker } from "react-native-maps";
 import { removeLabels } from "./../../data/mapStyle";
 import MapViewDirections from "react-native-maps-directions";
 import Chat from "./Chat";
+import { useNavigation } from "@react-navigation/native";
+import ShowProfileDriver from "../../component/ShowProfileDriver";
+import DriverProfileModal from "./DriverProfileModal";
 const RideStarted = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const driverId = useSelector(selectSaveDriverId);
   const hideProfile = useSelector(selectRequestHide);
-  console.log("xxxx", hideProfile);
   const userReduxData = useSelector(selectUserProfile);
   const [fetchedData, setFetchedData] = useState(null);
   const [showRideInfo, setShowRideInfo] = useState(false);
+  const [openDriver, setOpenDriver] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [prevMessages, setPrevMessages] = useState([]);
-
   const [changed, setChanged] = useState(false);
   const [fetchDataWithComID, setFetchDataWithComID] = useState(null);
   const [rideInfo, setRideInfo] = useState({
@@ -50,11 +53,20 @@ const RideStarted = () => {
   useEffect(() => {
     if (hideProfile) {
       setShowChat(false);
+      setOpenDriver(false);
+
       setTimeout(() => {
         dispatch(setRequestHide(false));
       }, 100);
     }
   }, [hideProfile]);
+  useEffect(() => {
+    if (fetchedData) {
+      if (fetchedData.status.isFinished) {
+        navigation.navigate("RideFinish");
+      }
+    }
+  }, [fetchedData]);
 
   const handleCancel = () => {
     Alert.alert("Cancel", "Are you sure you want to cancel?", [
@@ -75,7 +87,6 @@ const RideStarted = () => {
 
               await remove(requestDocRef);
               console.log("Data removed successfully");
-
               dispatch(setRideStarted(false));
               dispatch(setSaveDriverId(null));
             } else {
@@ -136,12 +147,10 @@ const RideStarted = () => {
   }, [fetchedData, fetchDataWithComID]);
 
   const mapRef = useRef(null);
-  console.log(driverId);
   useEffect(() => {
     if (fetchedData && fetchedData.chat) {
       const dbRef = ref(db, `POSTED_RIDES/${driverId}/chat`);
 
-      // Assuming 'messages' is a key within the 'chat' node
       const onDataChanged = (snapshot) => {
         const chatData = snapshot.val();
 
@@ -164,6 +173,15 @@ const RideStarted = () => {
   if (fetchedData) {
     return (
       <View style={{ flex: 1, width: "100%" }}>
+        {openDriver && (
+          <>
+            <DriverProfileModal
+              data={userReduxData.info}
+              id={fetchedData.driverInfo.driverId}
+            />
+          </>
+        )}
+
         {showRideInfo && (
           <>
             <RideInfoModal
@@ -185,6 +203,7 @@ const RideStarted = () => {
             />
           </>
         )}
+
         {showChat && (
           <>
             <Chat />
@@ -211,7 +230,7 @@ const RideStarted = () => {
               showsMyLocationButton={false}
               showsUserLocation={false}
               scrollEnabled={true}
-              zoomControlEnabled={true}
+              zoomControlEnabled={false}
               ref={mapRef}
               customMapStyle={removeLabels}
               style={{
@@ -293,6 +312,7 @@ const RideStarted = () => {
                     distance: distance,
                     description: description,
                   });
+
                   if (!fetchedData.status.isStarted) {
                     mapRef.current.fitToCoordinates(result.coordinates, {
                       edgePadding: {
@@ -312,7 +332,7 @@ const RideStarted = () => {
               onPress={handleCancel}
               style={{
                 paddingVertical: 12,
-                backgroundColor: "red",
+                backgroundColor: "#f03f46",
                 width: "30%",
                 borderRadius: 30,
                 position: "absolute",
@@ -321,7 +341,12 @@ const RideStarted = () => {
               }}
             >
               <Text
-                style={{ fontSize: 16, color: "#fff", textAlign: "center" }}
+                style={{
+                  fontSize: 18,
+                  color: "#fff",
+                  textAlign: "center",
+                  fontWeight: "bold",
+                }}
               >
                 Cancel
               </Text>
@@ -371,10 +396,15 @@ const RideStarted = () => {
             zIndex: 10,
             alignItems: "center",
             top: "30%",
-            right: 15,
+            right: 20,
           }}
         >
-          <TouchableOpacity style={{ marginTop: 15 }} onPress={() => {}}>
+          <TouchableOpacity
+            style={{ marginTop: 15 }}
+            onPress={() => {
+              setOpenDriver(true);
+            }}
+          >
             <FontAwesome name="user-circle-o" size={50} color={"#302c34"} />
           </TouchableOpacity>
           <TouchableOpacity

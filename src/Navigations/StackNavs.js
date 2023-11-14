@@ -12,6 +12,7 @@ import SetRideRequest from "../Screens/Homepage/SetRideRequest";
 import SetOriginPlace from "../Screens/Homepage/SetOriginPlace";
 import SetDestination from "../Screens/Homepage/SetDestination";
 import SearchingRide from "../Screens/Homepage/SearchingRide";
+import RideFinish from "../Screens/Homepage/RideFinish";
 
 const StackNav = () => {
   const Stack = createNativeStackNavigator();
@@ -74,6 +75,7 @@ const StackNav = () => {
         <Stack.Screen name="SetRideRequest" component={SetRideRequest} />
         <Stack.Screen name="SetOriginPlace" component={SetOriginPlace} />
         <Stack.Screen name="SetDestination" component={SetDestination} />
+        <Stack.Screen name="RideFinish" component={RideFinish} />
         <Stack.Screen name="SearchingRide" component={SearchingRide} />
       </Stack.Navigator>
     );

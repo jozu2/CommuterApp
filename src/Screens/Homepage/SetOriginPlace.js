@@ -186,7 +186,14 @@ const SetOriginPlace = () => {
               />
             </TouchableOpacity>
 
-            <Text style={{ fontSize: 26, fontWeight: "400", paddingTop: 20 }}>
+            <Text
+              style={{
+                fontSize: 26,
+                fontWeight: "400",
+                paddingTop: 20,
+                color: "#fff",
+              }}
+            >
               {pressedMarkerDes.title}
             </Text>
             <Text style={{ color: "gray", fontSize: 16, marginBottom: 20 }}>

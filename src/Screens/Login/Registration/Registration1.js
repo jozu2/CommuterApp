@@ -30,7 +30,7 @@ const Registration1 = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const validateEmail = (email) => {
-    if (email.endsWith("@gmail.com")) {
+    if (email.endsWith("@dhvsu.edu.ph")) {
       setErrorEmail(false);
       return true;
     } else {

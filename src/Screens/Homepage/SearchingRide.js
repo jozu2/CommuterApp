@@ -81,6 +81,7 @@ const SearchingRide = () => {
 
     return () => off(dbRef, "value", onDataChange);
   }, []);
+
   return (
     <SafeAreaView
       style={{
@@ -175,15 +176,6 @@ const SearchingRide = () => {
                       {data.driverInfo?.driverName}
                     </Text>
 
-                    <Text
-                      style={{
-                        lineHeight: 14,
-                        fontSize: 14,
-                        fontWeight: "300",
-                      }}
-                    >
-                      {formatTimeAgo(data.status.timePosted)}
-                    </Text>
                     <View
                       style={{
                         flexDirection: "row",

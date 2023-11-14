@@ -24,7 +24,7 @@ const DriverProfile = () => {
         <View>
           <View
             style={{
-              backgroundColor: "#313133",
+              backgroundColor: "#1e1f22",
               width: "100%",
               height: 530,
             }}
@@ -67,7 +67,7 @@ const DriverProfile = () => {
                 borderRadius: 5000,
                 alignSelf: "center",
                 borderWidth: 4,
-                borderColor: "#fff",
+                borderColor: "#8660bf",
                 zIndex: 10,
               }}
             />
@@ -116,13 +116,16 @@ const DriverProfile = () => {
             </View>
             <View
               style={{
-                backgroundColor: "#ebebeb",
+                backgroundColor: "#8660bf",
                 width: "90%",
                 alignSelf: "center",
                 borderRadius: 10,
                 position: "absolute",
                 bottom: -30,
-                borderBottomColor: "gray",
+                borderBottomColor: "#121212",
+                borderTopColor: "#ebebeb",
+                borderRightColor: "#fff",
+                borderLeftColor: "gray",
                 borderWidth: 2,
               }}
             >
@@ -144,7 +147,7 @@ const DriverProfile = () => {
                       style={{
                         fontSize: 17,
                         fontWeight: "400",
-                        color: UserProfile.info.isVerified ? `green` : `red`,
+                        color: UserProfile.info.isVerified ? `#25a45c` : `red`,
                       }}
                     >
                       {UserProfile.info.isVerified ? `YES` : `NO`}
@@ -153,18 +156,19 @@ const DriverProfile = () => {
                       style={{
                         fontSize: 12,
                         fontWeight: "500",
-                        color: "#4f4f4f",
+                        color: "#fff",
                       }}
                     >
                       Verified
                     </Text>
                   </View>
+
                   <View style={{ alignItems: "center" }}>
                     <Text
                       style={{
                         fontSize: 17,
                         fontWeight: "400",
-                        color: "black",
+                        color: "#fff",
                       }}
                     >
                       {UserProfile.info.completedRide}
@@ -173,7 +177,7 @@ const DriverProfile = () => {
                       style={{
                         fontSize: 12,
                         fontWeight: "500",
-                        color: "#4f4f4f",
+                        color: "#fff",
                       }}
                     >
                       Total Rides
@@ -184,7 +188,7 @@ const DriverProfile = () => {
                       style={{
                         fontSize: 17,
                         fontWeight: "400",
-                        color: "black",
+                        color: "#fff",
                       }}
                     >
                       {UserProfile.info.dateCreated}
@@ -193,7 +197,7 @@ const DriverProfile = () => {
                       style={{
                         fontSize: 12,
                         fontWeight: "500",
-                        color: "#4f4f4f",
+                        color: "#fff",
                       }}
                     >
                       Date Created
@@ -225,7 +229,7 @@ const DriverProfile = () => {
                           fontWeight: "500",
                         }}
                       >
-                        {UserProfile.info.teacherID}
+                        {UserProfile.info.UserID}
                       </Text>
                       <Text style={{ fontSize: 12, fontWeight: "300" }}>
                         Dhvsu ID
@@ -257,28 +261,6 @@ const DriverProfile = () => {
                         }}
                       >
                         Contact No.
-                      </Text>
-                    </View>
-                  </Pressable>
-                </View>
-              </View>
-            </View>
-            <View>
-              <View>
-                <View>
-                  <Pressable style={styles.pressableBtn}>
-                    <EvilIcons name="tag" size={30} color="black" />
-                    <View style={{ paddingLeft: 15 }}>
-                      <Text
-                        style={{
-                          fontSize: 17,
-                          fontWeight: "500",
-                        }}
-                      >
-                        {UserProfile.info.plateNo}
-                      </Text>
-                      <Text style={{ fontSize: 12, fontWeight: "300" }}>
-                        Vehicle Plate Number
                       </Text>
                     </View>
                   </Pressable>
