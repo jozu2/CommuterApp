@@ -11,7 +11,14 @@ import {
   DrawerItemList,
 } from "@react-navigation/drawer";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUserProfile, setUserProfile } from "../Redux/navSlice";
+import {
+  selectUserProfile,
+  setRideStarted,
+  setRideStartedSchool,
+  setSaveDriverId,
+  setSaveDriverIdSchool,
+  setUserProfile,
+} from "../Redux/navSlice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const CustomDrawer = (props) => {
@@ -34,6 +41,10 @@ const CustomDrawer = (props) => {
         JSON.stringify({ info: null, id: null })
       );
       dispatch(setUserProfile({ info: null, id: null }));
+      dispatch(setSaveDriverId(null));
+      dispatch(setSaveDriverIdSchool(null));
+      dispatch(setRideStarted(false));
+      dispatch(setRideStartedSchool(false));
     } catch (error) {
       console.error("Error logging out:", error);
     }

@@ -222,7 +222,7 @@ const SetOriginPlace = () => {
                     title: pressedMarkerDes.title,
                   })
                 );
-                navigation.navigate("SetRideRequest");
+                navigation.navigate("chooseRide");
               }}
             >
               <Text

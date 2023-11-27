@@ -13,6 +13,10 @@ import SetOriginPlace from "../Screens/Homepage/SetOriginPlace";
 import SetDestination from "../Screens/Homepage/SetDestination";
 import SearchingRide from "../Screens/Homepage/SearchingRide";
 import RideFinish from "../Screens/Homepage/RideFinish";
+import SetDestinationSchool from "../Screens/Homepage/SetDestinationSchool";
+import SetChooseRide from "../Screens/Homepage/SetChooseRide";
+import SearchingRideToSchool from "../Screens/Homepage/SearchingRideToSchool";
+import RideFinishSchool from "../Screens/Homepage/RideFinishSchool";
 
 const StackNav = () => {
   const Stack = createNativeStackNavigator();
@@ -77,6 +81,16 @@ const StackNav = () => {
         <Stack.Screen name="SetDestination" component={SetDestination} />
         <Stack.Screen name="RideFinish" component={RideFinish} />
         <Stack.Screen name="SearchingRide" component={SearchingRide} />
+        <Stack.Screen name="RideFinishSchool" component={RideFinishSchool} />
+        <Stack.Screen name="chooseRide" component={SetChooseRide} />
+        <Stack.Screen
+          name="SearchingRideToSchool"
+          component={SearchingRideToSchool}
+        />
+        <Stack.Screen
+          name="SetDestinationSchool"
+          component={SetDestinationSchool}
+        />
       </Stack.Navigator>
     );
   }

@@ -20,7 +20,7 @@ const Registration2 = () => {
   const regInfo = useSelector(selectRegistrationInfo);
   const [selectedFaculty, setselectedFaculty] = useState("");
   const [selectedGender, setselectedGender] = useState("");
-  const Faculty = ["IT", "ICT", "HRM", "BM", "COE"];
+  const Faculty = ["CCS", "CBS", "CEA", "CAS", "CIT", "CHTM", "COE", "CSSP"];
   const Gender = ["Male", "Female"];
   const [teacherID, setTeacherID] = useState("");
   const [address, setAddress] = useState("");
@@ -121,7 +121,7 @@ const Registration2 = () => {
           onValueChange={(itemValue, itemIndex) => setselectedGender(itemValue)}
         >
           <Picker.Item
-            label="Gender"
+            label="Sex"
             value=""
             style={{ color: "gray", fontSize: 17 }}
           />

@@ -1,41 +1,34 @@
 import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
 import React from "react";
-import TopNav from "../../component/TopNav";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  selectDestination,
-  selectOrigin,
+  selectDestinationSchool,
   selectUserCount,
   setUserCount,
 } from "../../Redux/navSlice";
 import Feather from "react-native-vector-icons/Feather";
 import { Keyboard } from "react-native";
 
-const SetRideRequest = () => {
+const SetRideRequestToSchool = () => {
   const navigation = useNavigation();
   const number = useSelector(selectUserCount);
-  const origin = useSelector(selectOrigin);
+  // const origin = useSelector(selectOrigin);
   const dispatch = useDispatch();
-  const destination = useSelector(selectDestination);
+  const destination = useSelector(selectDestinationSchool);
   const handleSearchRide = () => {
-    if (origin.title === null) {
-      Alert.alert("Please Set your Entry point");
-      return;
-    }
     if (destination.description === null) {
-      Alert.alert("Please Set your destination point");
+      Alert.alert("Please Set your meeting point");
       return;
     }
-    navigation.navigate("SearchingRide");
+    navigation.navigate("SearchingRideToSchool");
   };
   return (
     <View style={styles.loadingContainer}>
       <View style={styles.mainContainer}>
         <Text style={styles.titleMain}>Set up Ride Requests</Text>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.btnSetOrigin}
           onPress={() => {
             navigation.navigate("SetOriginPlace");
@@ -52,22 +45,22 @@ const SetRideRequest = () => {
               "Set up Entry point"
             )}
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <TouchableOpacity
           style={styles.btnSetDestination}
           onPress={() => {
-            navigation.navigate("SetDestination");
+            navigation.navigate("SetDestinationSchool");
           }}
         >
           <Text style={styles.setDestinationText}>
             {destination.title ? (
               <Text>
-                {`Destination : ${destination.title}  `}
+                {`Waiting Area: ${destination.title}  `}
 
-                <Feather name="edit-2" size={14} color={"#fff"} />
+                <Feather name="edit-2" size={12} color={"#fff"} />
               </Text>
             ) : (
-              "Set up Destination"
+              "Set up Meeting point"
             )}
           </Text>
         </TouchableOpacity>
@@ -110,7 +103,7 @@ const SetRideRequest = () => {
   );
 };
 
-export default SetRideRequest;
+export default SetRideRequestToSchool;
 
 const styles = StyleSheet.create({
   TextInp: {
@@ -131,7 +124,7 @@ const styles = StyleSheet.create({
   },
   setDestinationText: {
     textAlign: "center",
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
     fontSize: 16,
     color: "#fff",
     fontWeight: "400",

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   requestHide: false,
   saveDriverId: null,
+  saveDriverIdSchool: null,
   registrationInfo: {
     fullName: null,
     emailAdd: null,
@@ -16,6 +17,7 @@ const initialState = {
 
   savedImage: null,
   rideStarted: false,
+  rideStartedSchool: false,
 
   userCount: 1,
   origin: {
@@ -26,6 +28,12 @@ const initialState = {
   },
   waypoints: { latitude: null, longitude: null },
   destination: {
+    latitude: null,
+    longitude: null,
+    description: null,
+    title: null,
+  },
+  destinationSchool: {
     latitude: null,
     longitude: null,
     description: null,
@@ -60,8 +68,14 @@ export const navSlice = createSlice({
     setRideStarted: (state, action) => {
       state.rideStarted = action.payload;
     },
+    setRideStartedSchool: (state, action) => {
+      state.rideStartedSchool = action.payload;
+    },
     setSaveDriverId: (state, action) => {
       state.saveDriverId = action.payload;
+    },
+    setSaveDriverIdSchool: (state, action) => {
+      state.saveDriverIdSchool = action.payload;
     },
     setUserCount: (state, action) => {
       state.userCount = action.payload;
@@ -78,6 +92,9 @@ export const navSlice = createSlice({
 
     setDestination: (state, action) => {
       state.destination = action.payload;
+    },
+    setDestinationSchool: (state, action) => {
+      state.destinationSchool = action.payload;
     },
 
     setWaypoints: (state, action) => {
@@ -99,13 +116,16 @@ export const navSlice = createSlice({
 
 export const {
   setRequestHide,
+  setSaveDriverIdSchool,
   setSaveDriverId,
   setRideStarted,
+  setRideStartedSchool,
   setUserCount,
   setRegistrationInfo,
   setSavedImage,
   setOrigin,
   setDestination,
+  setDestinationSchool,
   setWaypoints,
   setViewBookings,
   setUserProfile,
@@ -113,7 +133,10 @@ export const {
 } = navSlice.actions;
 export const selectRequestHide = (state) => state.nav.requestHide;
 export const selectSaveDriverId = (state) => state.nav.saveDriverId;
+export const selectSaveDriverIdSchool = (state) => state.nav.saveDriverIdSchool;
+export const selectDestinationSchool = (state) => state.nav.destinationSchool;
 export const selectRideStarted = (state) => state.nav.rideStarted;
+export const selectRideStartedSchool = (state) => state.nav.rideStartedSchool;
 export const selectUserCount = (state) => state.nav.userCount;
 export const selectRegistrationInfo = (state) => state.nav.registrationInfo;
 export const selectOrigin = (state) => state.nav.origin;

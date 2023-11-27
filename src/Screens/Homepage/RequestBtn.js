@@ -109,7 +109,7 @@ const RequestBtn = () => {
         if (distance <= 40) {
           setActiveIndicator(false);
 
-          navigation.navigate("SetRideRequest");
+          navigation.navigate("chooseRide");
         } else {
           setActiveIndicator(false);
 
@@ -163,11 +163,10 @@ const RequestBtn = () => {
       )}
       <Text
         style={{
-          fontSize: 30,
-          fontWeight: "500",
+          fontSize: 26,
+          fontWeight: "300",
           textAlign: "center",
           color: activeIndicator ? "#ebebeb" : "#fff",
-          backgroundColor: activeIndicator ? "transparent" : "#8660bf",
           paddingVertical: 10,
           borderRadius: 10,
         }}

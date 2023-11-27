@@ -12,7 +12,11 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-import { setDestination, setOrigin } from "../../Redux/navSlice";
+import {
+  setDestination,
+  setDestinationSchool,
+  setOrigin,
+} from "../../Redux/navSlice";
 import { markers } from "../../data/destinationEndpoints";
 import { mapDarkStyle } from "../../data/mapStyle";
 import TopNav from "../../component/TopNav";
@@ -195,7 +199,7 @@ const SetDestination = () => {
               }}
               onPress={() => {
                 dispatch(
-                  setDestination({
+                  setDestinationSchool({
                     latitude: takeMarkerCoordinates.latitude,
                     longitude: takeMarkerCoordinates.longitude,
                     description: takeMarkerCoordinates.description,
@@ -213,7 +217,7 @@ const SetDestination = () => {
                   color: "#fff",
                 }}
               >
-                Set Destination
+                Set Location
               </Text>
               <MaterialIcons name="done" size={25} color={"#fff"} />
             </TouchableOpacity>
